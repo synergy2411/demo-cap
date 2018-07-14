@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { Component, 
+    ViewEncapsulation, 
+    Input, 
+    Output, 
+    EventEmitter,
+    OnInit, 
+    SimpleChanges} from '@angular/core';
 import { User } from '../model/user';
 
 @Component({
@@ -13,10 +19,24 @@ import { User } from '../model/user';
     styleUrls : [`./user.component.css`],
     encapsulation : ViewEncapsulation.Emulated
 })
-export class UserComponent{
+export class UserComponent implements OnInit{
     @Input('xyz') title : string;
     @Input('user') user : User;
-    @Output('childEvent') childEvent = new EventEmitter<string>()
+    @Output('childEvent') childEvent = new EventEmitter<string>();
+
+    constructor(){
+        console.log('constructor');
+    }
+    ngOnInit(){
+        console.log("ngOnInit");
+    }
+    ngOnChanges(changes : SimpleChanges){console.log("ngOnChanges", changes);}
+    ngDoCheck(){console.log("ngDoCheck");}
+    ngAfterContentInit(){console.log("ngAfterContentInit");}
+    ngAfterContentChecked(){console.log("ngAfterContentChecked");}
+    ngAfterViewInit(){console.log("ngAfterViewInit");}
+    ngAfterViewChecked(){console.log("ngAfterViewChecked");}
+    ngOnDestroy(){console.log("ngOnDestroy");}
 
     onKeyup(value : string){
         this.childEvent.emit(value);
