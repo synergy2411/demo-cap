@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { User } from '../model/user';
 
 @Component({
     selector : 'app-user',
@@ -13,17 +14,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
     encapsulation : ViewEncapsulation.Emulated
 })
 export class UserComponent{
-    moreInfo(user){
+    @Input('xyz') title : string;
+    @Input('user') user : User;
+    @Output('childEvent') childEvent = new EventEmitter<string>()
+
+    onKeyup(value : string){
+        this.childEvent.emit(value);
+    }
+
+    moreInfo(user : User){
         alert(`${user.firstName } is working with ${user.company}!!`);
     }
-    user = {
-        firstName : "Bill",
-        lastName : "Gates",
-        income : 50000,
-        dob : new Date("Dec 21, 1964"),
-        isWorking : true,
-        company : "Microsoft",
-        image : "assets/images/bill.jpg",
-        votes : 120
-    }
+    
 }
