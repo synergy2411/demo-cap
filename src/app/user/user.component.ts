@@ -6,6 +6,7 @@ import { Component,
     OnInit, 
     SimpleChanges} from '@angular/core';
 import { User } from '../model/user';
+import { DataService } from '../services/data.service';
 
 @Component({
     selector : 'app-user',
@@ -17,7 +18,8 @@ import { User } from '../model/user';
     //     }
     // `]
     styleUrls : [`./user.component.css`],
-    encapsulation : ViewEncapsulation.Emulated
+    encapsulation : ViewEncapsulation.Emulated,
+    providers : [DataService]
 })
 export class UserComponent implements OnInit{
     @Input('xyz') title : string;
@@ -30,9 +32,10 @@ export class UserComponent implements OnInit{
     }
 
     myColor = "green";
-    // constructor(){
-    //     console.log('constructor');
-    // }
+    increase(){this.dataService.counter++;}
+    constructor(public dataService : DataService){
+        console.log('constructor');
+    }
     ngOnInit(){
         console.log("ngOnInit");
     }

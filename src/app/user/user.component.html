@@ -1,4 +1,7 @@
-{{ users | json }}
+<div class="container">
+        Counter in User Comp : {{ dataService.counter }}
+        <button (click)="increase()">Increase</button>
+</div>
 
 <div class="container">
 <input type="text" (keyup)="onKeyup(childCtrl.value)" #childCtrl>
