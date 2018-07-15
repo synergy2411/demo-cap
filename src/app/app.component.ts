@@ -20,7 +20,11 @@ export class AppComponent {
 
  ngOnInit(){
   //  this.users = USER_DATA;
-  this.users = this.dataService.getUserData();
+  //this.users = this.dataService.getUserData();
+  this.dataService.getJsonData()
+    .subscribe(
+      (data)=>this.users = data
+    )
  }
 
  constructor(private dataService : DataService){}
