@@ -11,7 +11,18 @@ export class AuthService {
       console.log(response)
     }).catch(err=>console.log(err))
   }
-  login(username : string, password : string){}
+  login(username : string, password : string){
+    firebase.auth().signInWithEmailAndPassword(username, password)
+      .then(response=>{
+        console.log(response);
+        firebase.auth().currentUser.getIdToken()
+          .then(token=>{
+            console.log(token);
+          })
+          .catch(err=>console.log(err))
+      })
+      .catch(err=>console.log(err));
+  }
   constructor() { }
 
 }
