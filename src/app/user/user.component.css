@@ -1,3 +1,9 @@
 h2{
     color : greenyellow;
 }
+.myBorder {
+    border : 2px red solid;
+}
+.myText {
+    text-decoration: underline;
+}

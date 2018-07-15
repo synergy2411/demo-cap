@@ -1,50 +1,56 @@
 <div class="container">
-    <input type="text" (keyup)="onKeyup(childCtrl.value)" #childCtrl>
+<input type="text" (keyup)="onKeyup(childCtrl.value)" #childCtrl>
 </div>
 
 <div class="container">
-    <h1>Welcome to Angular {{title}}</h1>
+<h1>Welcome to Angular {{title}}</h1>
 </div>
 
 <div class="container">
-    <ng-content select="header"></ng-content>
+<ng-content select="header"></ng-content>
 </div>
 
 <div class="container">
-    <ng-content select="#section"></ng-content>
+<ng-content select="#section"></ng-content>
 </div>
 
 <div class="container">
-    <ul class="list-unstyled">
-        <li class="well" *ngFor="let user of users; first as isFirst; last as isLast; index as i; even as isEven; odd as isOdd;">
-            <div class="row">
-                <div class="col-xs-2 col-sm-2 col-md-2">
-                    #{{i}} {{isFirst}} {{isEven}}
-                    <img [src]="user.image">
-                    <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
-                        More Info
-                    </button>
-                </div>
-                <div class="col-xs-10 col-sm-10 col-md-10">
-                    <h1> {{user.firstName }} {{ user.lastName }}</h1>
-                    <p *ngIf="user.isWorking; else ElseTemplate">Income : {{user.income}} </p>
-                    <p>Date of Birth : <span [innerHTML]="user.dob"></span> </p>
-                    <em class="pull-right">
-                        Total Votes : {{ user.votes }}
-                        <input type="text" [value]="user.votes"
-                            (change)="user.votes = $event.target.value">
-                        <input type="text" [(ngModel)]="user.votes">
-                        
-                    </em>
-                </div>
-            </div>
-           <ng-template #ElseTemplate>
-                {{user.firstName }} is not working now!
-           </ng-template>
-        </li>
-    </ul>
+<ul class="list-unstyled">
+<li class="well" *ngFor="let user of users; first as isFirst; last as isLast; index as i; even as isEven; odd as isOdd;">
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            #{{i}} {{isFirst}} {{isEven}}
+            <img [src]="user.image">
+            <button class="btn btn-info btn-sm" (click)="moreInfo(user)">
+                More Info
+            </button>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10">
+            <h1 apphighlight [myColor]="myColor"> {{user.firstName }} {{ user.lastName }}</h1>
+            <!-- <ng-template [ngIf]="user.isWorking">
+                <p>
+
+                </p>
+            </ng-template> -->
+            <p *ngIf="user.isWorking; else ElseTemplate">Income : {{user.income}} </p>
+            <p [ngClass]="{'myBorder' : isEven, 'myText' : isOdd}">Date of Birth : <span [innerHTML]="user.dob"></span> </p>
+            <!-- <p [ngClass]="myClasses">Date of Birth : <span [innerHTML]="user.dob"></span> </p> -->
+            <em class="pull-right">
+                Total Votes : {{ user.votes }}
+                <input type="text" [value]="user.votes"
+                    (change)="user.votes = $event.target.value">
+                <input type="text" [(ngModel)]="user.votes">
+                
+            </em>
+        </div>
+    </div>
+    <ng-template #ElseTemplate>
+        {{user.firstName }} is not working now!
+    </ng-template>
+</li>
+</ul>
 </div>
 
 <div class="container">
-    <ng-content select="footer"></ng-content>
+<ng-content select="footer"></ng-content>
 </div>
