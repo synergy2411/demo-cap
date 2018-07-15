@@ -1,3 +1,5 @@
+{{ users | json }}
+
 <div class="container">
 <input type="text" (keyup)="onKeyup(childCtrl.value)" #childCtrl>
 </div>
@@ -26,7 +28,7 @@
             </button>
         </div>
         <div class="col-xs-10 col-sm-10 col-md-10">
-            <h1 apphighlight [myColor]="myColor"> {{user.firstName }} {{ user.lastName }}</h1>
+            <h1 apphighlight [myColor]="myColor"> {{user.firstName | uppercase }} {{ user.lastName | uppercase }}</h1>
             <!-- <ng-template [ngIf]="user.isWorking">
                 <p>
 
@@ -35,11 +37,11 @@
             <!-- <ng-template [appUnless]="user.isWorking">
                 Unless Works!
             </ng-template> -->
-            <p *appUnless="user.isWorking">
+            <p *appUnless="!user.isWorking">
                 Unless Works!
             </p>
-            <p *ngIf="user.isWorking; else ElseTemplate">Income : {{user.income}} </p>
-            <p [ngClass]="{'myBorder' : isEven, 'myText' : isOdd}">Date of Birth : <span [innerHTML]="user.dob"></span> </p>
+            <p *ngIf="user.isWorking; else ElseTemplate">Income : {{user.income | currency : 'INR'}} </p>
+            <p [ngClass]="{'myBorder' : isEven, 'myText' : isOdd}">Date of Birth : <span [innerHTML]="user.dob | date : 'MM/dd/yyyy'"></span> </p>
             <!-- <p [ngClass]="myClasses">Date of Birth : <span [innerHTML]="user.dob"></span> </p> -->
             <em class="pull-right">
                 Total Votes : {{ user.votes }}

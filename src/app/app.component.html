@@ -1,4 +1,10 @@
 <div class="container">
+
+  <app-pipe-demo></app-pipe-demo>
+
+  <br><br>
+  <hr>
+
   <h2>Data arrived from child : {{ parentData }}</h2>
   <app-user [xyz]="title" [users]="users" (childEvent)="onParent($event)">
     <header>Some Header</header>
