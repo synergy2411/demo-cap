@@ -1,0 +1,12 @@
+https://github.com/synergy2411/demo-cap
+
+npm install @angular/cli@1.7 -g
+npm install bootstrap@3 --save
+
+ng new <PROJECT_NAME> [--routing]
+cd <PROJECT_NAME>
+ng serve [--port 3000]
+
+ng generate directive <DIRECTIVE_NAME>
+ng g d <DIRECTIVE_NAME>
+ng generate module <MODULE_NAME>

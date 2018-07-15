@@ -16,9 +16,10 @@ export class HighlightDirective{
     @HostListener('mouseenter') 
     mouseenter(eventdata){
         //alert('Mouse Entered!');
-        this.bgColor = this.myColor;
+        this.bgColor = this.myColor;   
     }
     constructor(private elementRef : ElementRef){
+        //console.log(this.myColor);      //?
         //console.log(this.elementRef.nativeElement);
         //this.elementRef.nativeElement.style.backgroundColor = "aqua";
     }

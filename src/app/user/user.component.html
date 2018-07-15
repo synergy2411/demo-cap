@@ -32,6 +32,12 @@
 
                 </p>
             </ng-template> -->
+            <!-- <ng-template [appUnless]="user.isWorking">
+                Unless Works!
+            </ng-template> -->
+            <p *appUnless="user.isWorking">
+                Unless Works!
+            </p>
             <p *ngIf="user.isWorking; else ElseTemplate">Income : {{user.income}} </p>
             <p [ngClass]="{'myBorder' : isEven, 'myText' : isOdd}">Date of Birth : <span [innerHTML]="user.dob"></span> </p>
             <!-- <p [ngClass]="myClasses">Date of Birth : <span [innerHTML]="user.dob"></span> </p> -->

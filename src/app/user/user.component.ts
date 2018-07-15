@@ -33,9 +33,9 @@ export class UserComponent implements OnInit{
     // constructor(){
     //     console.log('constructor');
     // }
-    // ngOnInit(){
-    //     console.log("ngOnInit");
-    // }
+    ngOnInit(){
+        console.log("ngOnInit");
+    }
     // ngOnChanges(changes : SimpleChanges){console.log("ngOnChanges", changes);}
     // ngDoCheck(){console.log("ngDoCheck");}
     // ngAfterContentInit(){console.log("ngAfterContentInit");}
