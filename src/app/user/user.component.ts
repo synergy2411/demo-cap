@@ -21,7 +21,7 @@ import { User } from '../model/user';
 })
 export class UserComponent implements OnInit{
     @Input('xyz') title : string;
-    @Input('user') user : User;
+    @Input('users') users : User[];
     @Output('childEvent') childEvent = new EventEmitter<string>();
 
     constructor(){
