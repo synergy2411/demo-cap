@@ -9,14 +9,34 @@
         <input type="text" name="username"
           class="form-control"
           [formControl]="username">
+          <div [hidden]="username.valid || username.untouched">
+            Some problem with username!!
+            <div [hidden]="!username.hasError('required')">
+                Username is mandatory field!
+            </div>
+            <div [hidden]="!username.hasError('minlength')">
+              Should be 5 characters long!
+            </div>
+          </div>
       </div>
       <div class="form-group">
         <label for="password">Password  :</label>
         <input type="password" name="password"
           class="form-control"
           [formControl]="password">
+          <div [hidden]="password.valid || password.untouched">
+            Some Problem with Password!
+            <div [hidden]="!password.hasError('required')">
+              Password is mandatory!
+            </div>
+            <div [hidden]="!password.hasError('needExclamation')">
+              Password should container Exclamantion Mark!
+            </div>
+          </div>
       </div>
-      <button (click)="register()" class="btn btn-success btn-lg">Register</button>
+      <button (click)="register()"
+        [disabled]="registerForm.invalid"
+        class="btn btn-success btn-lg">Register</button>
     </form>
   </div>
 </div>

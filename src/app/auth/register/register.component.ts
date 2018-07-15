@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['../login/login.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  username = new FormControl('');
-  password = new FormControl('');
+  username = new FormControl('',[
+    Validators.required,
+    Validators.minLength(5)
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    this.hasExclamationMark
+  ]);
   registerForm : FormGroup;
+  
+  hasExclamationMark(input : FormControl){
+    
+    const hasExcl = input.value.indexOf('!') >= 0;
+    return hasExcl ? null : { needExclamation : true}
+  }
+
   register(){
     console.log(this.registerForm);
   }
