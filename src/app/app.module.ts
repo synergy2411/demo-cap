@@ -19,6 +19,10 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { LoggerInterceptorService } from './services/logger-interceptor.service';
 import { APP_ROUTES } from './app.routing';
+import { ProductsComponent } from './products/products.component';
+import { OverviewComponent } from './products/overview/overview.component';
+import { SpecificationComponent } from './products/specification/specification.component';
+import { LoginGaurdService } from './services/login-gaurd.service';
 
 
 @NgModule({
@@ -31,7 +35,10 @@ import { APP_ROUTES } from './app.routing';
     CountryCodePipe,
     FilterPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductsComponent,
+    OverviewComponent,
+    SpecificationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,7 @@ import { APP_ROUTES } from './app.routing';
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [ DataService, AuthService, {
+  providers: [ DataService, AuthService, LoginGaurdService, {
     provide : HTTP_INTERCEPTORS,
     useClass : AuthInterceptorService,
     multi : true

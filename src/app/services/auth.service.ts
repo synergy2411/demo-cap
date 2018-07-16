@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +22,7 @@ export class AuthService {
           .then(token=>{
             console.log(token);
             this.token = token;
+            this.router.navigate(['pipe']);
           })
           .catch(err=>console.log(err))
       })
@@ -38,6 +41,6 @@ export class AuthService {
   isAuthenticated(){
     return this.token !=null;
   }
-  constructor() { }
+  constructor(private router : Router) { }
 
 }

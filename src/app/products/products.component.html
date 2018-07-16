@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>
+    Product works!
+  </h2>
+  <div class="container">
+    <ul class="list-unstyled">
+      <li>
+        <a [routerLink]="['overview']" [queryParams]="{'page_no' : 99}">overview</a>
+      </li>
+      <li>
+        <a [routerLink]="['spec', 4, 'iPhoneX']">Specification</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
