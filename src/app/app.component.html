@@ -1,16 +1,30 @@
+
+<div class="container">
+  <ul class="list-unstyled nav navbar-nav navbar-default">
+    <li><a [routerLink]="['login']">Login</a></li>
+    <li><a [routerLink]="['register']">Register</a></li>
+    <li><a [routerLink]="['pipe']">Pipe Demo</a></li>
+  </ul>
+</div>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
 <div class="container">
 
   Counter in App Comp : {{ dataService.counter }}
   <button (click)="increase()">Increase</button>
 
 
-  <app-register></app-register>
+  <!-- <app-register></app-register>
 
 
-  <app-login></app-login>
+  <app-login></app-login> -->
 
-  <br><br>
-  <hr>
+  <!-- <br><br>
+  <hr> -->
 
   <!-- <app-pipe-demo></app-pipe-demo> -->
 
@@ -19,11 +33,10 @@
 
   <h2>Data arrived from child : {{ parentData }}</h2>
 
-  <div *ngIf="authService.isAuthenticated()">
+  
   <app-user [xyz]="title" [users]="users" (childEvent)="onParent($event)">
     <header>Some Header</header>
     <main id="section">Main Contents with {{ title }}</main>
     <footer>Footer Info</footer>
   </app-user>
-</div>
 </div>
