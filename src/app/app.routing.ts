@@ -6,6 +6,7 @@ import { ProductsComponent } from './products/products.component';
 import { OverviewComponent } from './products/overview/overview.component';
 import { SpecificationComponent } from './products/specification/specification.component';
 import { LoginGaurdService } from './services/login-gaurd.service';
+import { EmployeeComponent } from './employee-module/employee/employee.component';
 
 export const APP_ROUTES : Routes = [{
     path : '',                              //http://localhost:4200
@@ -21,6 +22,12 @@ export const APP_ROUTES : Routes = [{
     path : 'pipe',
     component : PipeDemoComponent,
      canActivate : [LoginGaurdService]
+},{
+    path : 'employee',
+    component : EmployeeComponent
+},{
+    path : 'lazy',
+    loadChildren : 'app/lazy/lazy.module#LazyModule'
 },{
     path : 'product',
     component :ProductsComponent,
