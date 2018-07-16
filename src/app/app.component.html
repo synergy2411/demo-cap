@@ -18,9 +18,12 @@
   <hr>
 
   <h2>Data arrived from child : {{ parentData }}</h2>
+
+  <div *ngIf="authService.isAuthenticated()">
   <app-user [xyz]="title" [users]="users" (childEvent)="onParent($event)">
     <header>Some Header</header>
     <main id="section">Main Contents with {{ title }}</main>
     <footer>Footer Info</footer>
   </app-user>
+</div>
 </div>

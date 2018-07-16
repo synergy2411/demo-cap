@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,10 @@ export class LoginComponent implements OnInit {
       f.value.password
     )
   }
-  constructor(private authService : AuthService) { }
+  getData(){
+    this.dataService.getApiData();
+  }
+  constructor(private authService : AuthService, private dataService : DataService) { }
 
   ngOnInit() {
   }

@@ -34,10 +34,10 @@ export class UserComponent implements OnInit{
     myColor = "green";
     increase(){this.dataService.counter++;}
     constructor(public dataService : DataService){
-        console.log('constructor');
+        //console.log('constructor');
     }
     ngOnInit(){
-        console.log("ngOnInit");
+        //console.log("ngOnInit");
     }
     // ngOnChanges(changes : SimpleChanges){console.log("ngOnChanges", changes);}
     // ngDoCheck(){console.log("ngDoCheck");}

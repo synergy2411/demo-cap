@@ -3,6 +3,7 @@ import { User } from './model/user';
 import { DataService } from './services/data.service';
 //import { USER_DATA } from './data/mocks';
 import * as firebase from 'firebase';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -26,18 +27,12 @@ export class AppComponent {
    });
   //  this.users = USER_DATA;
   //this.users = this.dataService.getUserData();
-  // this.dataService.getJsonData()
-  //   .subscribe(
-  //     (data)=>this.users = data
-  //   )
-  this.dataService.getApiData()
+  this.dataService.getJsonData()
     .subscribe(
-      data => this.users = data,
-      err=>console.log(err),
-      ()=>console.log("COMPLTED")
+      (data)=>this.users = data
     )
-
  }
  increase(){this.dataService.counter++;}
- constructor(public dataService : DataService){}
+ constructor(public dataService : DataService,
+            public authService : AuthService){}
 }
