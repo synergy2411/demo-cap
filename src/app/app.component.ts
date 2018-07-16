@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { User } from './model/user';
 import { DataService } from './services/data.service';
 //import { USER_DATA } from './data/mocks';
 import * as firebase from 'firebase';
 import { AuthService } from './services/auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // changeDetection : ChangeDetectionStrategy.
 })
 export class AppComponent {
   parentData  :string;
@@ -34,5 +36,21 @@ export class AppComponent {
  }
  increase(){this.dataService.counter++;}
  constructor(public dataService : DataService,
-            public authService : AuthService){}
-}
+            public authService : AuthService, 
+          private sanitize : DomSanitizer,
+          private zone : NgZone,
+          private cdRef : ChangeDetectorRef){
+            this.cdRef.
+            this.zone.runOutsideAngular(()=>{
+
+            })
+            this.zone.run(()=>{
+
+            })
+            this.safeUrl = this.sanitize.bypassSecurityTrustUrl(this.dangerUrl);
+          }
+
+            safeUrl : any;
+            dangerUrl : "javascript:alert('Hello')";
+            htmlSnippets = "Template <script>alert('Hello')</script>"
+          }

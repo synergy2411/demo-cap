@@ -11,6 +11,16 @@
 </div>
 
 
+<p>Interpolation : {{ htmlSnippets }}</p>
+
+Property Bindings : 
+<p [innerHTML]="htmlSnippets"></p>
+
+
+<button (click)="dangerUrl">Danger</button>
+<button (click)="safeUrl">Safe</button>
+
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>
